@@ -8,6 +8,7 @@ import {
   getByText,
   prettyDOM,
   queryByRole,
+  queryByAltText,
   queryByText,
   render,
   waitForElement,
