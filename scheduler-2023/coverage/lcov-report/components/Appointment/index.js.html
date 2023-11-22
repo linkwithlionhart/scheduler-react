@@ -22,30 +22,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">52% </span>
+                <span class="strong">72% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/25</span>
+                <span class='fraction'>18/25</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>13/20</span>
+                <span class='fraction'>15/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">10% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/10</span>
+                <span class='fraction'>4/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.17% </span>
+                <span class="strong">70.83% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/24</span>
+                <span class='fraction'>17/24</span>
             </div>
         
             
@@ -170,25 +170,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -196,7 +196,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -263,19 +263,19 @@ export default function Appointment(props) {
   
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
   const interview = props.interview;
-  const onAdd = <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >transition(CREATE);</span>
+  const onAdd = () =&gt; transition(CREATE);
 &nbsp;
-  function <span class="fstat-no" title="function not covered" >save(</span>name, interviewer) {
-    const interview = <span class="cstat-no" title="statement not covered" >{</span>
+  function save(name, interviewer) {
+    const interview = {
       student: name,
       interviewer
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    transition(SAVING);</span>
+    transition(SAVING);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    props</span>
+    props
       .bookInterview(props.id, interview)
-      .then(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >transition(SHOW))</span>
+      .then(() =&gt; transition(SHOW))
       .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; <span class="cstat-no" title="statement not covered" >transition(ERROR_SAVE, true))</span>;
   }
 &nbsp;
@@ -300,7 +300,7 @@ export default function Appointment(props) {
         /&gt;
       )}
       {mode === CREATE &amp;&amp; (
-<span class="branch-1 cbranch-no" title="branch not covered" >        &lt;Form interviewers={props.interviewers} onCancel={back} onSave={save} /&gt;</span>
+        &lt;Form interviewers={props.interviewers} onCancel={back} onSave={save} /&gt;
       )}
       {mode === EDIT &amp;&amp; (
 <span class="branch-1 cbranch-no" title="branch not covered" >        &lt;Form</span>
@@ -311,7 +311,7 @@ export default function Appointment(props) {
           onSave={save}
         /&gt;
       )}
-      {mode === SAVING &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;Status message="Saving" /&gt;}</span>
+      {mode === SAVING &amp;&amp; &lt;Status message="Saving" /&gt;}
       {mode === DELETING &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;Status message="Deleting" /&gt;}</span>
       {mode === CONFIRM &amp;&amp; (
 <span class="branch-1 cbranch-no" title="branch not covered" >        &lt;Confirm</span>
@@ -336,7 +336,7 @@ export default function Appointment(props) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Mon Nov 20 2023 12:52:57 GMT-0800 (Pacific Standard Time)
+                at Tue Nov 21 2023 23:16:57 GMT-0800 (Pacific Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
